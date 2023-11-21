@@ -1,0 +1,62 @@
+import java.io.*; 
+import java.util.*; 
+
+public class AutoPilotSystem { 
+	
+	public static void main(String[] args) throws IOException { 
+		
+		// Radar Communication Signal 
+		String radarSignal; 
+
+		// Terrain Avoidance System 
+		boolean terrainCheck; 
+
+		// Airport navigation System 
+		String nearestAirport = ""; 
+
+		// BufferedReader object to read from stream 
+		BufferedReader br = 
+				new BufferedReader(new InputStreamReader(System.in)); 
+
+		System.out.println("Input the Radar Communication Signal:"); 
+		
+		// Read the radar signal 
+		radarSignal = br.readLine(); 
+
+		// Check for the terrain 
+		terrainCheck = checkTerrain(radarSignal); 
+
+		if (terrainCheck == true) { 
+			System.out.println("Terrain Crash Avoidance System Activated !"); 
+		} else { 
+			System.out.println("Terrain Crash Avoidance System Not Activated !"); 
+		} 
+
+		// Find the nearest airport 
+		nearestAirport = nearestAirport(radarSignal); 
+
+		System.out.println("Nearest Airport is : " + nearestAirport); 
+	} 
+
+	// checkTerrain function to check the terrain 
+	public static boolean checkTerrain(String radarSignal) { 
+		
+		// check the signal and return 
+		if (radarSignal.equals("Terrain Ahead")) { 
+			return true; 
+		} else { 
+			return false; 
+		} 
+	} 
+
+	// nearestAirport Function to find the nearest airport 
+	public static String nearestAirport(String radarSignal) { 
+		
+		// check the signal and return the nearest airport 
+		if (radarSignal.equals("Airport Ahead")) { 
+			return "Nearest Airport"; 
+		} else { 
+			return "No Airport Found"; 
+		} 
+	} 
+}
